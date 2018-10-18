@@ -28,13 +28,13 @@ provider:
 
 # Define our lambda functions and the events they respond to
 functions:
-  listTodos:
+  listTodosxx:
     handler: todos/handler.list
     events:
       - http:
           path: todos
           method: get
-  postTodosX:
+  postTodosXx:
     handler: todos/handler.post
     events:
       - http:
@@ -44,7 +44,7 @@ functions:
 # Define CloudFormation resource templates here
 resources:
   Resources:
-    TodosDBx:
+    TodosDBxx:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         TableName: 'Todos-${opt:stage}'
