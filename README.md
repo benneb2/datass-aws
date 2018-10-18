@@ -78,3 +78,25 @@ If you change the `serverless.yml` file, you'll need to restart your local app:
 - Run `sls offline start --stage dev` again.
 
 Changes to any other file in the app (e.g. a handler) will be reflected immediately, and don't require a restart.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I acknowledge that AWS CloudFormation might create IAM resources with custom names.
+
+

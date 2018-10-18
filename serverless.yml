@@ -7,7 +7,7 @@ provider:
 # Overwrite defaults
   memorySize: 512 # overwrite default memory of 1024
   versionFunctions: false # don't create a new function version with each deploy
-  region: us-west-2 # override default region us-east-1
+  region: us-east-1 # override default region us-east-1
 
 # Service-wide environment variables
   environment:
@@ -24,17 +24,19 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-west-2:*:*"
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
 # Define our lambda functions and the events they respond to
 functions:
-  listTodosxx:
+  listTodos:
+    name: 'listTodos-${opt:stage}'
     handler: todos/handler.list
     events:
       - http:
           path: todos
           method: get
-  postTodosXx:
+  postTodos:
+    name: 'postTodos-${opt:stage}'
     handler: todos/handler.post
     events:
       - http:
@@ -44,7 +46,7 @@ functions:
 # Define CloudFormation resource templates here
 resources:
   Resources:
-    TodosDBxx:
+    TodosDB:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         TableName: 'Todos-${opt:stage}'
