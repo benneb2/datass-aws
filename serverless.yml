@@ -34,7 +34,7 @@ functions:
       - http:
           path: todos
           method: get
-  postTodos:
+  postTodosX:
     handler: todos/handler.post
     events:
       - http:
@@ -44,7 +44,7 @@ functions:
 # Define CloudFormation resource templates here
 resources:
   Resources:
-    TodosDB:
+    TodosDBx:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         TableName: 'Todos-${opt:stage}'
