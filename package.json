@@ -4,7 +4,7 @@
   "description": "Demo Serverless project using CodeBuild and CodePipeline for CI/CD. Tutorial available at http://www.1strategy.com/blog/.",
   "main": "handler.js",
   "scripts": {
-    "test": "jest __tests__/unit/*",
+    "test": "jest --env=node __tests__/unit/*",
     "lint": "eslint */*.js",
     "integration": "jest __tests__/integration/*"
   },
@@ -35,5 +35,9 @@
   "dependencies": {
     "serverless-dynamodb-client": "0.0.2",
     "uuid": "^3.1.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
   }
 }
