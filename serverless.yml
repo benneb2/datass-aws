@@ -1,4 +1,4 @@
-service: serverless-ci-cd
+service: datass-serverless
 
 provider:
   name: aws
@@ -9,6 +9,8 @@ provider:
   versionFunctions: false # don't create a new function version with each deploy
   region: us-east-1 # override default region us-east-1
 
+  stackName: datass-serverless-${opt:stage} # Use a custom name for the CloudFormation stack
+  apiName: datass-api-${opt:stage} # Use a custom name for the API Gateway API
 # Service-wide environment variables
   environment:
     STAGE: ${opt:stage}
@@ -49,7 +51,7 @@ resources:
     TodosDB:
       Type: 'AWS::DynamoDB::Table'
       Properties:
-        TableName: 'Todos-${opt:stage}'
+        TableName: 'TodosTable-${opt:stage}'
         # here we define the primary key of the table.
         AttributeDefinitions:
           -
