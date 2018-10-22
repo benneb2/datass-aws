@@ -1,4 +1,4 @@
-service: datass-serverless
+service: datass-serverless-stack
 
 provider:
   name: aws
@@ -9,7 +9,7 @@ provider:
   versionFunctions: false # don't create a new function version with each deploy
   region: us-east-1 # override default region us-east-1
 
-  stackName: datass-serverless-${opt:stage} # Use a custom name for the CloudFormation stack
+  stackName: datass-serverless-stack-${opt:stage} # Use a custom name for the CloudFormation stack
   apiName: datass-api-${opt:stage} # Use a custom name for the API Gateway API
 # Service-wide environment variables
   environment:
@@ -30,15 +30,15 @@ provider:
 
 # Define our lambda functions and the events they respond to
 functions:
-  listTodos:
-    name: 'listTodos-${opt:stage}'
+  listTodo:
+    name: 'listTodo-${opt:stage}'
     handler: todos/handler.list
     events:
       - http:
           path: todos
           method: get
-  postTodos:
-    name: 'postTodos-${opt:stage}'
+  postTodo:
+    name: 'postTodo-${opt:stage}'
     handler: todos/handler.post
     events:
       - http:
